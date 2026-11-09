@@ -1,7 +1,9 @@
 """Create docs/previews/*: a 'before' (matplotlib defaults) vs 'after' (publication style) comparison."""
+import importlib.util
 from pathlib import Path
-import matplotlib.pyplot as plt
+
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,7 +17,6 @@ ax.set_xlabel("temperature_c"); ax.set_ylabel("power_w")
 fig.savefig(OUT / "figure_before.svg", bbox_inches="tight")
 plt.close(fig)
 
-import importlib.util
 spec = importlib.util.spec_from_file_location("gf", ROOT / "scripts" / "generate_figures.py")
 gf = importlib.util.module_from_spec(spec); spec.loader.exec_module(gf)
 gf.setup_style(); mpl.rcParams["svg.fonttype"] = "path"
