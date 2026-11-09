@@ -10,10 +10,10 @@ Five portfolio projects in one reproducible repository: journal-paper typesettin
 
 | # | Project | Where | Output |
 |---|---------|-------|--------|
-| 1 | IEEEtran journal paper: `align`/`gather`/subequations, matrices, `\\DeclareMathOperator`, booktabs + siunitx table, BibTeX, `cleveref` | `src/paper/` | `dist/paper.pdf` (built by CI) |
+| 1 | IEEEtran journal paper: `align`/`gather`/subequations, matrices, `\DeclareMathOperator`, booktabs + siunitx table, BibTeX, `cleveref` | `src/paper/` | `dist/paper.pdf` (built by CI) |
 | 2 | Native TikZ: Transformer, finite state machine, PID loop, plus PGFPlots step response; shared `tikzset` styles, `positioning` library | `src/tikz/` | `dist/tikz_showcase.pdf` |
 | 3 | pandas + matplotlib + seaborn pipeline: cleaning, aggregation, 2x2 figure, vector PDF/SVG, 300 dpi PNG, Okabe-Ito palette, Computer Modern fonts, LaTeX `subfigure` integration | `scripts/`, `figures/` | `figures/*.pdf` |
-| 4 | Multi-file thesis: root `main.tex`, `preamble.tex`, `\\include` chapters, fancyhdr, title page, TOC/LOF/LOT, index, appendices | `src/thesis/` | `dist/thesis.pdf` |
+| 4 | Multi-file thesis: root `main.tex`, `preamble.tex`, `\include` chapters, fancyhdr, title page, TOC/LOF/LOT, index, appendices | `src/thesis/` | `dist/thesis.pdf` |
 | 5 | Repo layout, CI workflow, this README | `.github/workflows/`, `Makefile` | PDFs as build artifacts |
 
 ## Before / after
@@ -39,7 +39,7 @@ latexmk -pdf -cd src/paper/main.tex
 latexmk -pdf -cd src/thesis/main.tex
 ```
 
-For fast thesis drafts, uncomment `\\includeonly{...}` in `src/thesis/main.tex`.
+For fast thesis drafts, uncomment `\includeonly{...}` in `src/thesis/main.tex`.
 
 ## Continuous integration
 
