@@ -1,66 +1,71 @@
 # Academic Typesetting Portfolio
 
-[![Build PDFs](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml) ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+A practical portfolio of academic typesetting and research-document production using **LaTeX, TikZ/PGFPlots, Python, and GitHub Actions**.
 
-Five portfolio projects in one reproducible repository: journal-paper typesetting, native TikZ/PGFPlots diagrams, a Python figure pipeline, a multi-file thesis architecture, and automated PDF delivery via GitHub Actions.
+This repository demonstrates the workflow behind clean, reproducible, publication-style research documents. It includes an IEEE-style journal paper, a multi-file thesis, custom vector diagrams, and a reproducible scientific-figure pipeline.
 
-> **All data is synthetic** (fixed random seed, `scripts/make_data.py`). The documents demonstrate typesetting and tooling, not real research findings.
+> **Demonstration data:** the sensor dataset is synthetic and generated with a fixed random seed. It is included to demonstrate document production and reproducible figure generation, not to present real research findings.
 
-## Contents
+## Portfolio projects
 
-| # | Project | Where | Output |
-|---|---------|-------|--------|
-| 1 | IEEEtran journal paper: `align`/`gather`/subequations, matrices, `\DeclareMathOperator`, booktabs + siunitx table, BibTeX, `cleveref` | `src/paper/` | `dist/paper.pdf` (built by CI) |
-| 2 | Native TikZ: Transformer, finite state machine, PID loop, plus PGFPlots step response; shared `tikzset` styles, `positioning` library | `src/tikz/` | `dist/tikz_showcase.pdf` |
-| 3 | pandas + matplotlib + seaborn pipeline: cleaning, aggregation, 2x2 figure, vector PDF/SVG, 300 dpi PNG, Okabe-Ito palette, Computer Modern fonts, LaTeX `subfigure` integration | `scripts/`, `figures/` | `figures/*.pdf` |
-| 4 | Multi-file thesis: root `main.tex`, `preamble.tex`, `\include` chapters, fancyhdr, title page, TOC/LOF/LOT, index, appendices | `src/thesis/` | `dist/thesis.pdf` |
-| 5 | Repo layout, CI workflow, this README | `.github/workflows/`, `Makefile` | PDFs as build artifacts |
+| Project | What it demonstrates | Source |
+|---|---|---|
+| Journal paper | IEEEtran structure, advanced equations, matrices, BibTeX, cross-references, booktabs and siunitx tables | [`src/paper/`](src/paper/) |
+| TikZ graphics | Transformer architecture, finite-state machine, PID control loop and PGFPlots response curves | [`src/tikz/`](src/tikz/) |
+| Python figures | pandas data preparation, Matplotlib/seaborn visualizations, vector PDF/SVG output and LaTeX-ready tables | [`scripts/`](scripts/) |
+| Thesis | Multi-file architecture, reusable preamble, chapters, title page, TOC/LOF/LOT, bibliography, index and appendices | [`src/thesis/`](src/thesis/) |
+| Automated production | Python linting, TeX compilation, reference checks and downloadable PDF build artifacts | [GitHub Actions](.github/workflows/build-pdf.yml) |
 
-## Before / after
+## Technologies
 
-`python scripts/before_after.py` writes `docs/previews/figure_before.svg` (Matplotlib defaults: overplotted markers, raw column names, no site information) and `docs/previews/figure_after.svg` (publication style: Computer Modern fonts matching the paper, colour-blind-safe palette, sampled points, fit line, legend). These are build outputs and are not committed.
+- **LaTeX:** IEEEtran, AMS math, cleveref, BibTeX, booktabs, siunitx, fancyhdr and modular thesis structure.
+- **TikZ and PGFPlots:** custom vector diagrams and charts that inherit the document's typography.
+- **Python:** pandas, NumPy, Matplotlib and seaborn.
+- **Automation:** GitHub Actions for repeatable checks and PDF generation.
+
+## View the generated PDFs
+
+The GitHub Actions workflow compiles three PDFs and uploads them as a downloadable artifact named `pdfs`:
+
+1. `paper.pdf` — IEEE-style research paper.
+2. `thesis.pdf` — multi-file thesis example.
+3. `tikz_showcase.pdf` — native TikZ and PGFPlots gallery.
+
+Open the [latest successful workflow run](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml) and download the `pdfs` artifact from its run.
 
 ## Build locally
 
-Requirements: TeX Live or MiKTeX (with `latexmk`, `texlive-publishers` for IEEEtran, `texlive-science`, `texlive-pictures`, `texlive-bibtex-extra`) and Python 3.10+.
+Requirements: Python 3.10+, TeX Live or MiKTeX, `latexmk`, IEEEtran and the packages used in the source documents.
 
 ```bash
 pip install -r requirements.txt
-make all          # data -> figures -> all PDFs
-make paper        # or: make tikz / make thesis / make figures
+make all
+```
+
+Individual targets:
+
+```bash
+make figures
+make paper
+make tikz
+make thesis
 make clean
 ```
 
-Without `make`:
+The data and figures are generated locally and the compiled outputs are excluded from version control. See `.gitignore` for the generated paths.
 
-```bash
-python scripts/make_data.py && python scripts/generate_figures.py
-latexmk -pdf -cd src/paper/main.tex
-latexmk -pdf -cd src/thesis/main.tex
+## Repository structure
+
+```text
+.github/workflows/   Automated build and validation
+data/                Synthetic input-data generator notes
+docs/                Portfolio notes and service-bundle mapping
+scripts/             Data generation and figure pipeline
+src/paper/           IEEE-style research paper
+src/thesis/          Multi-file thesis
+src/tikz/            Native TikZ/PGFPlots diagrams
 ```
 
-For fast thesis drafts, uncomment `\includeonly{...}` in `src/thesis/main.tex`.
+## Contact
 
-## Continuous integration
-
-`.github/workflows/build-pdf.yml` installs TeX Live, regenerates data and figures, builds all three documents, fails on undefined references/citations, and uploads the PDFs as the `pdfs` artifact on every push.
-
-## Layout
-
-```
-data/      CSV (generated)  figures/  generated vector figures + tables
-scripts/   Python pipeline  src/      LaTeX sources (paper, tikz, thesis)
-dist/      built PDFs (CI)  docs/     previews, offer description
-```
-
-## Releases
-
-Pushing a tag such as `v1.0.0` publishes the compiled PDFs and a `SHA256SUMS` file as GitHub Release assets.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
-
-## License
-
-MIT, see [LICENSE](LICENSE).
+For academic typesetting, LaTeX formatting, TikZ diagrams, thesis formatting, or publication-ready research figures, contact the repository owner through the [GitHub profile](https://github.com/uzairjaved-prog).
