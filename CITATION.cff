@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "Academic Typesetting Portfolio: LaTeX, TikZ and Python figure pipelines"
+type: software
+authors:
+  - family-names: "Javed"
+    given-names: "Muhammad Uzair"
+    alias: "uzairjaved-prog"
+license: MIT
+repository-code: "https://github.com/uzairjaved-prog/Academic-typesetting-portfolio"
+version: 1.0.0
+date-released: 2026-11-09

@@ -1,0 +1,7 @@
+\chapter{Reproducibility}\label{app:repro}
+Regenerate data and figures, then build:
+\begin{verbatim}
+python scripts/make_data.py
+python scripts/generate_figures.py
+cd src/thesis && latexmk -pdf main.tex
+\end{verbatim}

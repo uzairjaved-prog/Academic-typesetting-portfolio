@@ -1,0 +1,6 @@
+\chapter{Derivation of the Variance Formula}\label{app:deriv}
+Substituting $\bm y=\bm X\bm\beta+\bm\varepsilon$ into \eqref{eq:thesis-ols} gives $\hat{\bm\beta}=\bm\beta+(\bm X^{\top}\bm X)^{-1}\bm X^{\top}\bm\varepsilon$. Hence
+\begin{align}
+  \E[\hat{\bm\beta}] &= \bm\beta,\\
+  \Cov(\hat{\bm\beta}) &= (\bm X^{\top}\bm X)^{-1}\bm X^{\top}(\sigma^2\bm I)\bm X(\bm X^{\top}\bm X)^{-1}=\sigma^2(\bm X^{\top}\bm X)^{-1}.
+\end{align}

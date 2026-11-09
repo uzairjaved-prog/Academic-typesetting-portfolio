@@ -1,0 +1,35 @@
+% =====================================================================
+% main.tex -- root file. Chapters are \include'd so that
+%   \includeonly{chapters/ch3_methodology}
+% compiles one chapter in seconds while keeping cross-references.
+% =====================================================================
+\documentclass[a4paper,11pt,twoside,openright]{book}
+\input{preamble}
+
+%\includeonly{chapters/ch3_methodology}   % <- uncomment for fast draft builds
+
+\begin{document}
+\frontmatter
+\input{frontmatter/titlepage}
+\input{frontmatter/abstract}
+\input{frontmatter/acknowledgements}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\include{chapters/ch1_intro}
+\include{chapters/ch2_literature}
+\include{chapters/ch3_methodology}
+\include{chapters/ch4_results}
+\include{chapters/ch5_conclusion}
+
+\appendix
+\include{backmatter/appendix_a}
+\include{backmatter/appendix_b}
+
+\backmatter
+\bibliographystyle{plain}
+\bibliography{../paper/references}
+\printindex
+\end{document}

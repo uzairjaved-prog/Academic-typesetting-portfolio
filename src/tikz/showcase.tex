@@ -1,0 +1,17 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,xcolor}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{positioning,arrows.meta,calc,fit,backgrounds,automata}
+\pgfplotsset{compat=1.17}
+\input{tikz-styles}
+\usepackage{caption}
+\usepackage{hyperref}
+\begin{document}
+\section*{Native TikZ \& PGFPlots showcase}
+All figures below are pure vector graphics; labels inherit the document font.
+\begin{figure}[h]\centering\input{transformer}\caption{Transformer encoder stack with residual connections (TikZ).}\end{figure}
+\begin{figure}[h]\centering\input{fsm}\caption{Finite state machine with Mealy-style transitions (TikZ \texttt{automata}).}\end{figure}
+\begin{figure}[h]\centering\input{control_loop}\caption{Closed-loop PID control system (TikZ, \texttt{positioning}).}\end{figure}
+\begin{figure}[h]\centering\begin{minipage}{0.7\linewidth}\input{pgfplot_demo}\end{minipage}\caption{Second-order step responses (PGFPlots).}\end{figure}
+\end{document}

@@ -1,0 +1,15 @@
+% Finite state machine: simple vending-controller (Mealy-style labels input/output).
+\begin{tikzpicture}[auto, node distance=30mm, semithick]
+  \node[state, initial, initial text=] (s0) {$q_0$};
+  \node[state, right=of s0] (s1) {$q_1$};
+  \node[state, right=of s1] (s2) {$q_2$};
+  \node[state, accepting, below=22mm of s1] (s3) {$q_3$};
+  \path[->]
+    (s0) edge[loop above] node {$\mathtt{timeout}/\varnothing$} (s0)
+    (s0) edge node {$\mathtt{coin}/\varnothing$} (s1)
+    (s1) edge node {$\mathtt{coin}/\varnothing$} (s2)
+    (s1) edge node[right] {$\mathtt{select}/\mathtt{dispense}$} (s3)
+    (s2) edge node {$\mathtt{select}/\mathtt{dispense}$} (s3)
+    (s3) edge node[swap, pos=0.4] {$\mathtt{reset}/\varnothing$} (s0)
+    (s2) edge[bend right=50, swap] node[swap] {$\mathtt{refund}/\mathtt{return}$} (s0);
+\end{tikzpicture}

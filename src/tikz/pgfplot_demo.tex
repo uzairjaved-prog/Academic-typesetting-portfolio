@@ -1,0 +1,22 @@
+% Step response of a second-order system for several damping ratios,
+% plotted natively with PGFPlots (vector, fonts match the document).
+\begin{tikzpicture}
+  \begin{axis}[
+      width=\linewidth, height=0.62\linewidth,
+      xlabel={Time $t$ (s)}, ylabel={Response $y(t)$},
+      xmin=0, xmax=12, ymin=0, ymax=1.7,
+      grid=both, grid style={line width=.1pt, draw=gray!20}, major grid style={draw=gray!35},
+      legend pos=south east, legend style={font=\scriptsize, draw=none, fill=white, fill opacity=0.85},
+      every axis plot/.append style={line width=0.8pt}, samples=200, smooth, domain=0:12,
+      tick label style={font=\footnotesize}, label style={font=\footnotesize}]
+    \def\wn{1}
+    \addplot[oiVerm]{1 - exp(-0.2*\wn*x)*(cos(deg(\wn*sqrt(1-0.04)*x)) + (0.2/sqrt(1-0.04))*sin(deg(\wn*sqrt(1-0.04)*x)))};
+    \addlegendentry{$\zeta=0.2$}
+    \addplot[oiBlue]{1 - exp(-0.5*\wn*x)*(cos(deg(\wn*sqrt(1-0.25)*x)) + (0.5/sqrt(1-0.25))*sin(deg(\wn*sqrt(1-0.25)*x)))};
+    \addlegendentry{$\zeta=0.5$}
+    \addplot[oiGreen]{1 - exp(-0.8*\wn*x)*(cos(deg(\wn*sqrt(1-0.64)*x)) + (0.8/sqrt(1-0.64))*sin(deg(\wn*sqrt(1-0.64)*x)))};
+    \addlegendentry{$\zeta=0.8$}
+    \addplot[black, dashed, domain=0:12, samples=2]{1};
+    \addlegendentry{Setpoint}
+  \end{axis}
+\end{tikzpicture}

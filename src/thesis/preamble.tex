@@ -1,0 +1,52 @@
+% =====================================================================
+% preamble.tex -- all packages, geometry, headers and macros live here.
+% =====================================================================
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage[a4paper,inner=3.2cm,outer=2.6cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{setspace}\onehalfspacing
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{graphicx,subcaption,booktabs,siunitx,xcolor,enumitem}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{positioning,arrows.meta,calc,fit,backgrounds,automata}
+\pgfplotsset{compat=1.17}
+\usepackage{caption}\captionsetup{font=small,labelfont=bf}
+\usepackage{makeidx}\makeindex
+\usepackage{appendix}
+\usepackage[nottoc]{tocbibind}   % bibliography/LOF/LOT entries in the TOC
+\usepackage{emptypage}   % no headers on intentionally blank pages
+\usepackage{fancyhdr}
+\usepackage[hidelinks,bookmarksnumbered]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+% --- paths
+\graphicspath{{../../figures/}}
+
+% --- macros
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareSIUnit\gforce{\textit{g}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+
+% --- thesis metadata (single source of truth)
+\newcommand{\thesistitle}{Temperature-Driven Power Demand in Distributed Sensor Networks}
+\newcommand{\thesisauthor}{Muhammad Uzair Javed}
+\newcommand{\thesisdegree}{Master of Science in Data Engineering}
+\newcommand{\thesisdate}{\today}
+
+% --- shared TikZ styles
+\input{../tikz/tikz-styles}
+\input{../../figures/key_numbers}
+
+% --- headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}

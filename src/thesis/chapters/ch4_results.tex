@@ -1,0 +1,19 @@
+\chapter{Results}\label{ch:results}
+\section{Exploratory Analysis}
+Temperature and power correlate strongly ($r=\rTP$, \cref{fig:res-panels}(b)). Site differences appear in \cref{fig:res-panels}(c) and \cref{tab:res-summary}.
+
+\begin{figure}[t]\centering
+  \begin{subfigure}[t]{0.48\textwidth}\includegraphics[width=\linewidth]{fig_panel_a.pdf}\caption{Time series.}\end{subfigure}\hfill
+  \begin{subfigure}[t]{0.48\textwidth}\includegraphics[width=\linewidth]{fig_panel_b.pdf}\caption{Correlations.}\end{subfigure}\\[4pt]
+  \begin{subfigure}[t]{0.48\textwidth}\includegraphics[width=\linewidth]{fig_panel_c.pdf}\caption{Per-site distribution.}\end{subfigure}\hfill
+  \begin{subfigure}[t]{0.48\textwidth}\includegraphics[width=\linewidth]{fig_panel_d.pdf}\caption{Power vs.\ temperature.}\end{subfigure}
+  \caption{Exploratory analysis of the sensor dataset.}\label{fig:res-panels}
+\end{figure}
+
+\begin{table}[t]\centering
+  \caption{Per-site summary statistics.}\label{tab:res-summary}
+  \input{../../figures/summary_table}
+\end{table}
+
+\section{Discussion}
+Site~B has the highest mean power, matching its positive offset in the generating process. The strong correlation justifies the hinge model of \cref{prop:ols}.

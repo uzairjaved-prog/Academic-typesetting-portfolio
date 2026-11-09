@@ -1,0 +1,24 @@
+% Closed-loop feedback control system with PID controller, plant and sensor.
+\begin{tikzpicture}[node distance=9mm and 9mm, auto]
+  \node[coordinate] (in) {};
+  \node[sum, minimum size=5mm, right=10mm of in] (cmp) {};
+  \node[block, right=of cmp] (pid) {PID\\controller\\[-1pt]$C(s)$};
+  \node[block, right=of pid] (act) {Actuator\\$A(s)$};
+  \node[block, right=of act] (plant) {Plant\\$G(s)$};
+  \node[coordinate, right=12mm of plant] (out) {};
+  \node[block, below=10mm of act] (sens) {Sensor\\$H(s)$};
+  \node[coordinate, above=9mm of plant] (dist) {};
+  \draw[flow] (in) -- node[pos=0.3] {$r(t)$} (cmp);
+  \draw[flow] (cmp) -- node {$e(t)$} (pid);
+  \draw[flow] (pid) -- node {$u(t)$} (act);
+  \draw[flow] (act) -- (plant);
+  \draw[flow] (plant) -- node[pos=0.75] {$y(t)$} (out);
+  \draw[flow] ($(plant.east)+(6mm,0)$) |- (sens.east);
+  \draw[flow] (sens.west) -| node[pos=0.25, swap] {$y_m(t)$} (cmp.south);
+  \draw[flow] (dist) -- (plant.north);
+  \node[left=1mm of dist, font=\scriptsize] {disturbance $d(t)$};
+  \node[font=\scriptsize] at ($(cmp.north west)+(-1mm,1.5mm)$) {$+$};
+  \node[font=\scriptsize] at ($(cmp.south east)+(2.2mm,-1.5mm)$) {$-$};
+  \node[above=1mm of pid, font=\scriptsize, text=black!70, align=center]
+       {$u=K_p e+K_i\!\int e\,d\tau+K_d\dot e$};
+\end{tikzpicture}

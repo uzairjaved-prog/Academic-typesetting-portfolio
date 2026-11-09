@@ -1,0 +1,30 @@
+\chapter{Methodology}\label{ch:method}
+\section{Data}
+The dataset \texttt{data/sensor\_experiment.csv} contains \Nobs{} hourly rows from three sites (\emph{synthetic}, generated with a fixed seed). Missing values (50 in total) are filled by time-ordered linear interpolation.
+
+\section{Demand Model}
+\begin{proposition}\label{prop:ols}
+For $\bm X$ of full column rank, the estimator
+\begin{equation}
+  \hat{\bm\beta}=\argmin_{\bm\beta}\lVert\bm y-\bm X\bm\beta\rVert_2^2=(\bm X^{\top}\bm X)^{-1}\bm X^{\top}\bm y
+  \label{eq:thesis-ols}
+\end{equation}
+is unbiased with covariance $\Cov(\hat{\bm\beta})=\sigma^2(\bm X^{\top}\bm X)^{-1}$.
+\end{proposition}
+
+\section{Control Loop}
+\Cref{fig:loop-thesis} shows the closed loop; the PID law is
+\begin{equation}
+  u(t)=K_p e(t)+K_i\!\int_0^t e(\tau)\,d\tau+K_d\dot e(t).
+\end{equation}
+\begin{figure}[t]\centering
+  \resizebox{\textwidth}{!}{\input{../tikz/control_loop}}
+  \caption{Closed-loop PID control.}\label{fig:loop-thesis}
+\end{figure}
+\begin{figure}[t]\centering
+  \begin{minipage}{0.75\textwidth}\input{../tikz/pgfplot_demo}\end{minipage}
+  \caption{Second-order step responses for three damping ratios.}\label{fig:step-thesis}
+\end{figure}
+
+\section{Pipeline}
+All figures come from \texttt{scripts/generate\_figures.py}; see \cref{app:repro}.

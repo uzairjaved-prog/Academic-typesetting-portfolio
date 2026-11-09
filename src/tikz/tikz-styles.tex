@@ -1,0 +1,28 @@
+% ---------------------------------------------------------------
+% Shared TikZ styles. Fonts are inherited from the host document,
+% so labels match the body text automatically (no hard-coded fonts).
+% Required: \usepackage{tikz,pgfplots}, \usetikzlibrary{positioning,
+%   arrows.meta,calc,fit,backgrounds,automata,shapes.geometric}
+% ---------------------------------------------------------------
+\definecolor{oiBlue}{HTML}{0072B2}
+\definecolor{oiOrange}{HTML}{E69F00}
+\definecolor{oiGreen}{HTML}{009E73}
+\definecolor{oiVerm}{HTML}{D55E00}
+\definecolor{oiSky}{HTML}{56B4E9}
+
+\tikzset{
+  >={Stealth[length=1.6mm]},
+  every node/.append style={font=\footnotesize},
+  block/.style={draw, rounded corners=1pt, minimum width=22mm, minimum height=6.5mm,
+                align=center, line width=0.5pt, inner sep=2pt},
+  attn/.style={block, fill=oiBlue!15, draw=oiBlue!80!black},
+  ffn/.style={block, fill=oiGreen!15, draw=oiGreen!60!black},
+  norm/.style={block, fill=oiOrange!18, draw=oiOrange!70!black, minimum height=5mm},
+  embed/.style={block, fill=oiSky!20, draw=oiSky!60!black},
+  head/.style={block, fill=oiVerm!12, draw=oiVerm!70!black},
+  flow/.style={->, line width=0.5pt},
+  skip/.style={->, line width=0.5pt, dashed, oiVerm!80!black},
+  sum/.style={circle, draw, inner sep=0.8pt, line width=0.5pt},
+  state/.style={circle, draw, minimum size=9mm, line width=0.5pt, inner sep=1pt},
+  accepting/.style={double, double distance=1pt},
+}

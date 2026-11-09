@@ -1,0 +1,33 @@
+% Transformer encoder block stack (Vaswani et al. style), fully native TikZ.
+\begin{tikzpicture}[node distance=4.5mm and 6mm]
+  % --- input path
+  \node[embed] (tok) {Token\\embedding};
+  \node[embed, below=of tok] (pos) {Positional\\encoding};
+  \node[sum, above=4mm of tok] (add0) {$+$};
+  \draw[flow] (tok) -- (add0);
+  \draw[flow] (pos.east) -- ++(4mm,0) |- (add0.east);
+  % --- encoder layer (repeated N times)
+  \node[attn, above=6mm of add0] (mha) {Multi-head\\self-attention};
+  \node[norm, above=of mha] (n1) {Add \& LayerNorm};
+  \node[ffn, above=of n1] (ff) {Feed-forward\\network};
+  \node[norm, above=of ff] (n2) {Add \& LayerNorm};
+  \node[head, above=of n2] (out) {Linear + Softmax};
+  \draw[flow] (add0) -- (mha);
+  \draw[flow] (mha) -- (n1);
+  \draw[flow] (n1) -- (ff);
+  \draw[flow] (ff) -- (n2);
+  \draw[flow] (n2) -- (out);
+  % --- residual (skip) connections
+  \draw[skip] ($(add0.north)+(0,2mm)$) -- ++(-20mm,0) |- (n1.west);
+  \draw[skip] ($(n1.north)+(0,1.2mm)$) -- ++(-20mm,0) |- (n2.west);
+  % --- repeat bracket
+  \begin{scope}[on background layer]
+    \node[draw=black!50, dashed, rounded corners=3pt, inner sep=2.5mm,
+          fit=(mha)(n1)(ff)(n2), label={[font=\scriptsize, black!70]right:$\times N$}] {};
+  \end{scope}
+  % --- annotations
+  \node[right=7mm of mha, font=\scriptsize, align=left, text=black!70]
+        {$\mathrm{Attn}(Q,K,V)=\mathrm{softmax}\!\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)V$};
+  \node[above=2mm of out, font=\scriptsize, text=black!70] {Output probabilities};
+  \node[below=2mm of pos, font=\scriptsize, text=black!70] {Input tokens};
+\end{tikzpicture}

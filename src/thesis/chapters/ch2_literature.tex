@@ -1,0 +1,26 @@
+\chapter{Literature and Background}\label{ch:lit}
+\section{Scientific Python Stack}
+Tabular data handling follows \texttt{pandas}~\cite{mckinney2010pandas}; plots use Matplotlib~\cite{hunter2007matplotlib} and seaborn~\cite{waskom2021seaborn}. Palettes are chosen for colour-vision deficiency~\cite{wong2011color}.
+
+\section{Sequence Models}
+Attention-based architectures~\cite{vaswani2017attention} replaced recurrence in many forecasting pipelines. \Cref{fig:transformer-thesis} sketches the encoder stack, drawn natively in TikZ.
+
+\begin{figure}[t]\centering
+  \resizebox{0.55\textwidth}{!}{\input{../tikz/transformer}}
+  \caption{Transformer encoder stack with residual connections.}\label{fig:transformer-thesis}
+\end{figure}
+
+\section{Estimation Theory}\index{least squares}
+For a linear model $\bm y=\bm X\bm\beta+\bm\varepsilon$ the least-squares estimator attains the Cram\'er--Rao bound under Gaussian noise~\cite{kay1993estimation}.
+
+\begin{definition}[Hinge feature]
+For threshold $\tau$ the hinge feature of temperature $T$ is $h(T)=\max(T-\tau,0)$.
+\end{definition}
+
+\section{Control Background}\index{PID control}
+Classical feedback design is covered by Ogata~\cite{ogata2010modern}. A supervisory finite-state machine~\cite{hopcroft2006automata} can switch controller modes (\cref{fig:fsm-thesis}).
+
+\begin{figure}[t]\centering
+  \resizebox{0.8\textwidth}{!}{\input{../tikz/fsm}}
+  \caption{Supervisory finite-state machine.}\label{fig:fsm-thesis}
+\end{figure}
