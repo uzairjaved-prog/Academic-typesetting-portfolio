@@ -81,7 +81,7 @@ jobs:
           cp src/tikz/showcase.pdf dist/tikz_showcase.pdf
           (cd dist && sha256sum *.pdf > SHA256SUMS)
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pdfs
           path: dist/
