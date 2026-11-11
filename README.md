@@ -1,71 +1,88 @@
 # Academic Typesetting Portfolio
 
-A practical portfolio of academic typesetting and research-document production using **LaTeX, TikZ/PGFPlots, Python, and GitHub Actions**.
+[![Build PDFs](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml)
 
-This repository demonstrates the workflow behind clean, reproducible, publication-style research documents. It includes an IEEE-style journal paper, a multi-file thesis, custom vector diagrams, and a reproducible scientific-figure pipeline.
+**Academic document formatting, LaTeX typesetting, TikZ diagrams, and publication-ready figures.**
 
-> **Demonstration data:** the sensor dataset is synthetic and generated with a fixed random seed. It is included to demonstrate document production and reproducible figure generation, not to present real research findings.
+This repository is a visual and technical portfolio of document-production work. It shows how complex academic material can be organized, typeset, illustrated, and compiled into clean PDFs using LaTeX and Python.
 
-## Portfolio projects
+> **About the examples:** the research topic and dataset are demonstration material. All sensor observations are synthetic and generated with a fixed seed. These samples demonstrate typesetting and reproducible production; they are not presented as real experimental findings or university submissions.
 
-| Project | What it demonstrates | Source |
+## Selected work
+
+| Sample | Skills demonstrated | Preview |
 |---|---|---|
-| Journal paper | IEEEtran structure, advanced equations, matrices, BibTeX, cross-references, booktabs and siunitx tables | [`src/paper/`](src/paper/) |
-| TikZ graphics | Transformer architecture, finite-state machine, PID control loop and PGFPlots response curves | [`src/tikz/`](src/tikz/) |
-| Python figures | pandas data preparation, Matplotlib/seaborn visualizations, vector PDF/SVG output and LaTeX-ready tables | [`scripts/`](scripts/) |
-| Thesis | Multi-file architecture, reusable preamble, chapters, title page, TOC/LOF/LOT, bibliography, index and appendices | [`src/thesis/`](src/thesis/) |
-| Automated production | Python linting, TeX compilation, reference checks and downloadable PDF build artifacts | [GitHub Actions](.github/workflows/build-pdf.yml) |
+| **Journal paper** | IEEE-style two-column layout, equations, matrices, BibTeX references, cross-references, figures, and booktabs/siunitx tables | [Open preview](previews/paper-page-1.png) · [PDF](samples/paper.pdf) |
+| **Thesis layout** | Title page, abstract, contents, lists of figures/tables, modular chapters, appendices, bibliography, page headers, and index | [Cover preview](previews/thesis-cover.png) · [PDF](samples/thesis.pdf) |
+| **TikZ gallery** | Native vector diagrams for a Transformer, finite-state machine, PID control loop, and PGFPlots response curves | [Open preview](previews/tikz-gallery.png) · [PDF](samples/tikz-showcase.pdf) |
+| **Scientific figures** | pandas data preparation, Matplotlib/seaborn charts, vector graphics, reproducible summaries, and LaTeX-ready tables | [Figure preview](previews/scientific-figures.png) |
 
-## Technologies
+## Services demonstrated
 
-- **LaTeX:** IEEEtran, AMS math, cleveref, BibTeX, booktabs, siunitx, fancyhdr and modular thesis structure.
-- **TikZ and PGFPlots:** custom vector diagrams and charts that inherit the document's typography.
-- **Python:** pandas, NumPy, Matplotlib and seaborn.
-- **Automation:** GitHub Actions for repeatable checks and PDF generation.
+- **LaTeX formatting and conversion:** convert structured manuscripts into consistent, editable LaTeX projects.
+- **Thesis and dissertation formatting:** organize long documents with reusable styles, chapters, front matter, appendices, and references.
+- **Mathematical typesetting:** format equations, aligned derivations, matrices, theorems, and notation.
+- **TikZ and PGFPlots diagrams:** create native vector illustrations, flowcharts, architecture diagrams, and plots.
+- **Research figures and tables:** prepare reproducible charts, publication-style tables, and LaTeX figure integrations.
 
-## View the generated PDFs
+## How the samples are produced
 
-The GitHub Actions workflow compiles three PDFs and uploads them as a downloadable artifact named `pdfs`:
+The project combines:
 
-1. `paper.pdf` — IEEE-style research paper.
-2. `thesis.pdf` — multi-file thesis example.
-3. `tikz_showcase.pdf` — native TikZ and PGFPlots gallery.
+- **LaTeX:** IEEEtran, AMS math, cleveref, BibTeX, booktabs, siunitx, and a modular book-class thesis.
+- **TikZ / PGFPlots:** document-native vector diagrams with shared styles.
+- **Python:** NumPy, pandas, Matplotlib, and seaborn for deterministic data and figure generation.
+- **GitHub Actions:** Python linting, PDF compilation, reference checks, and downloadable build artifacts.
 
-Open the [latest successful workflow run](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml) and download the `pdfs` artifact from its run.
+## Download the samples
+
+The three sample PDFs are also attached to this repository under docs/samples/, so they remain available without needing to open a temporary Actions artifact.
+
+- [Journal paper](samples/paper.pdf)
+- [Thesis layout](samples/thesis.pdf)
+- [TikZ showcase](samples/tikz-showcase.pdf)
+
+The workflow also publishes a fresh pdfs artifact after successful builds. [View build history](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions).
 
 ## Build locally
 
-Requirements: Python 3.10+, TeX Live or MiKTeX, `latexmk`, IEEEtran and the packages used in the source documents.
+Requirements: Python 3.10+, TeX Live or MiKTeX, latexmk, IEEEtran, and the LaTeX packages used by the source files.
 
-```bash
+~~~bash
 pip install -r requirements.txt
 make all
-```
+~~~
 
 Individual targets:
 
-```bash
+~~~bash
 make figures
 make paper
 make tikz
 make thesis
 make clean
-```
+~~~
 
-The data and figures are generated locally and the compiled outputs are excluded from version control. See `.gitignore` for the generated paths.
+The data and figures are reproducibly generated by scripts/make_data.py and scripts/generate_figures.py. Generated intermediate files are excluded from version control; the curated client-facing samples are stored separately in docs/samples/.
 
-## Repository structure
+## Repository map
 
-```text
-.github/workflows/   Automated build and validation
-data/                Synthetic input-data generator notes
-docs/                Portfolio notes and service-bundle mapping
-scripts/             Data generation and figure pipeline
-src/paper/           IEEE-style research paper
-src/thesis/          Multi-file thesis
-src/tikz/            Native TikZ/PGFPlots diagrams
-```
+~~~text
+.github/workflows/   Automated quality checks and PDF builds
+src/paper/           IEEE-style paper source and bibliography
+src/thesis/          Multi-file thesis source
+src/tikz/            TikZ and PGFPlots source diagrams
+scripts/             Synthetic data and scientific-figure pipeline
+data/                Data-generation notes
+figures/             Generated local figures and tables
+docs/previews/       Selected page and figure previews
+docs/samples/        Curated PDF samples for visitors
+~~~
 
 ## Contact
 
-For academic typesetting, LaTeX formatting, TikZ diagrams, thesis formatting, or publication-ready research figures, contact the repository owner through the [GitHub profile](https://github.com/uzairjaved-prog).
+For academic typesetting, LaTeX formatting, thesis layout, TikZ diagrams, or publication-ready research figures, contact the repository owner through the [GitHub profile](https://github.com/uzairjaved-prog).
+
+---
+
+*The sample research content is illustrative. Client work should use the client's supplied manuscript, institutional template, data, and citation requirements.*
