@@ -24,3 +24,9 @@ data/*.csv
 dist/*
 !dist/.gitkeep
 docs/previews/
+
+# Curated client-facing samples are intentionally tracked.
+!docs/samples/
+!docs/samples/*.pdf
+!docs/previews/
+!docs/previews/*.jpg
