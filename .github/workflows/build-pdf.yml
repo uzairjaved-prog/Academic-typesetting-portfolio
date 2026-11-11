@@ -3,6 +3,7 @@ name: Build PDFs
 on:
   push:
     branches: [main]
+    tags: ["v*"]
   pull_request:
   workflow_dispatch:
 
@@ -10,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: build-${{ github.ref }}
+  group: build-\${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -39,13 +40,14 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      - name: Install TeX Live packages
+      - name: Install TeX and preview-rendering tools
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             latexmk texlive-latex-recommended texlive-latex-extra \
             texlive-science texlive-publishers texlive-pictures \
-            texlive-fonts-recommended texlive-bibtex-extra
+            texlive-fonts-recommended texlive-bibtex-extra \
+            poppler-utils fonts-dejavu-core
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
@@ -72,13 +74,16 @@ jobs:
             fi
           done
 
-      - name: Collect PDFs into dist/
+      - name: Collect PDFs and checksums
         run: |
           mkdir -p dist
-          cp src/paper/main.pdf    dist/paper.pdf
-          cp src/thesis/main.pdf   dist/thesis.pdf
-          cp src/tikz/showcase.pdf dist/tikz_showcase.pdf
+          cp src/paper/main.pdf dist/paper.pdf
+          cp src/thesis/main.pdf dist/thesis.pdf
+          cp src/tikz/showcase.pdf dist/tikz-showcase.pdf
           (cd dist && sha256sum *.pdf > SHA256SUMS)
+
+      - name: Generate client-facing previews
+        run: python scripts/make_previews.py --pdf-dir dist --output-dir dist/previews
 
       - uses: actions/upload-artifact@v4
         with:
@@ -87,3 +92,22 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+  release:
+    name: Publish sample PDFs and previews
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: pdfs
+          path: dist
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.pdf
+            dist/SHA256SUMS
+            dist/previews/*.jpg
+          generate_release_notes: true

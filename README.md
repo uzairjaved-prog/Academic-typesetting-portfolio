@@ -4,18 +4,20 @@
 
 **Academic document formatting, LaTeX typesetting, TikZ diagrams, and publication-ready figures.**
 
-This repository is a visual and technical portfolio of document-production work. It shows how complex academic material can be organized, typeset, illustrated, and compiled into clean PDFs using LaTeX and Python.
+This repository is a visual and technical portfolio of document-production work. It shows how complex academic material can be organized, typeset, illustrated, and compiled into polished PDFs using LaTeX and Python.
 
 > **About the examples:** the research topic and dataset are demonstration material. All sensor observations are synthetic and generated with a fixed seed. These samples demonstrate typesetting and reproducible production; they are not presented as real experimental findings or university submissions.
 
 ## Selected work
 
-| Sample | Skills demonstrated | Preview |
+![A visual overview of the academic typesetting portfolio](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest/download/portfolio-overview.jpg)
+
+| Sample | Skills demonstrated | PDF and preview |
 |---|---|---|
-| **Journal paper** | IEEE-style two-column layout, equations, matrices, BibTeX references, cross-references, figures, and booktabs/siunitx tables | [Open preview](previews/paper-page-1.png) · [PDF](samples/paper.pdf) |
-| **Thesis layout** | Title page, abstract, contents, lists of figures/tables, modular chapters, appendices, bibliography, page headers, and index | [Cover preview](previews/thesis-cover.png) · [PDF](samples/thesis.pdf) |
-| **TikZ gallery** | Native vector diagrams for a Transformer, finite-state machine, PID control loop, and PGFPlots response curves | [Open preview](previews/tikz-gallery.png) · [PDF](samples/tikz-showcase.pdf) |
-| **Scientific figures** | pandas data preparation, Matplotlib/seaborn charts, vector graphics, reproducible summaries, and LaTeX-ready tables | [Figure preview](previews/scientific-figures.png) |
+| **Journal paper** | IEEE-style two-column layout, equations, matrices, BibTeX references, cross-references, figures, and booktabs/siunitx tables | [Download PDF](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest/download/paper.pdf) · [Page preview](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest/download/paper-page-1.jpg) |
+| **Thesis layout** | Title page, abstract, contents, lists of figures/tables, modular chapters, appendices, bibliography, page headers, and index | [Download PDF](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest/download/thesis.pdf) · [Cover preview](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest/download/thesis-cover.jpg) |
+| **TikZ gallery** | Native vector diagrams for a Transformer, finite-state machine, PID control loop, and PGFPlots response curves | [Download PDF](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest/download/tikz-showcase.pdf) · [Page preview](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest/download/tikz-gallery.jpg) |
+| **Scientific figures** | pandas data preparation, Matplotlib/seaborn charts, vector graphics, reproducible summaries, and LaTeX-ready tables | [Figure preview](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest/download/scientific-figures.jpg) |
 
 ## Services demonstrated
 
@@ -31,22 +33,16 @@ The project combines:
 
 - **LaTeX:** IEEEtran, AMS math, cleveref, BibTeX, booktabs, siunitx, and a modular book-class thesis.
 - **TikZ / PGFPlots:** document-native vector diagrams with shared styles.
-- **Python:** NumPy, pandas, Matplotlib, and seaborn for deterministic data and figure generation.
-- **GitHub Actions:** Python linting, PDF compilation, reference checks, and downloadable build artifacts.
+- **Python:** NumPy, pandas, Matplotlib, seaborn, and Pillow for deterministic data, figures, and preview generation.
+- **GitHub Actions:** Python linting, PDF compilation, reference checks, preview rendering, and release publishing.
 
-## Download the samples
+## Download all samples
 
-The three sample PDFs are also attached to this repository under docs/samples/, so they remain available without needing to open a temporary Actions artifact.
-
-- [Journal paper](samples/paper.pdf)
-- [Thesis layout](samples/thesis.pdf)
-- [TikZ showcase](samples/tikz-showcase.pdf)
-
-The workflow also publishes a fresh pdfs artifact after successful builds. [View build history](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions).
+The [latest GitHub Release](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest) contains the three sample PDFs, a checksum file, and the preview images. The downloadable Actions artifact is retained for 30 days; Release assets are the permanent client-facing copies.
 
 ## Build locally
 
-Requirements: Python 3.10+, TeX Live or MiKTeX, latexmk, IEEEtran, and the LaTeX packages used by the source files.
+Requirements: Python 3.10+, TeX Live or MiKTeX, latexmk, pdftoppm (Poppler), IEEEtran, and the LaTeX packages used by the source files.
 
 ~~~bash
 pip install -r requirements.txt
@@ -60,23 +56,22 @@ make figures
 make paper
 make tikz
 make thesis
+make previews
 make clean
 ~~~
 
-The data and figures are reproducibly generated by scripts/make_data.py and scripts/generate_figures.py. Generated intermediate files are excluded from version control; the curated client-facing samples are stored separately in docs/samples/.
+The data and figures are reproducibly generated by scripts/make_data.py and scripts/generate_figures.py. The preview pipeline renders the first page of each PDF and assembles a compact overview for the README. Generated PDFs and images are build outputs rather than source files.
 
 ## Repository map
 
 ~~~text
-.github/workflows/   Automated quality checks and PDF builds
+.github/workflows/   Automated quality checks, PDF builds, and releases
 src/paper/           IEEE-style paper source and bibliography
 src/thesis/          Multi-file thesis source
 src/tikz/            TikZ and PGFPlots source diagrams
-scripts/             Synthetic data and scientific-figure pipeline
+scripts/             Data, figure, and preview-generation pipeline
 data/                Data-generation notes
 figures/             Generated local figures and tables
-docs/previews/       Selected page and figure previews
-docs/samples/        Curated PDF samples for visitors
 ~~~
 
 ## Contact
