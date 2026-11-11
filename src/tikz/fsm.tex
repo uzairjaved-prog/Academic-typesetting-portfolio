@@ -1,15 +1,27 @@
-% Finite state machine: simple vending-controller (Mealy-style labels input/output).
-\begin{tikzpicture}[auto, node distance=30mm, semithick]
-  \node[state, initial, initial text=] (s0) {$q_0$};
-  \node[state, right=of s0] (s1) {$q_1$};
-  \node[state, right=of s1] (s2) {$q_2$};
-  \node[state, accepting, below=22mm of s1] (s3) {$q_3$};
+% Finite-state vending controller. Transition labels are placed explicitly
+% so the diamond layout remains readable at journal-page scale.
+\begin{tikzpicture}[semithick]
+  \node[state, initial, initial text=] (s0) at (0,0) {$q_0$};
+  \node[state] (s1) at (2.5,1.65) {$q_1$};
+  \node[state] (s2) at (5,0) {$q_2$};
+  \node[state, accepting] (s3) at (2.5,-1.85) {$q_3$};
+
+  % Transitions
   \path[->]
-    (s0) edge[loop above] node {$\mathtt{timeout}/\varnothing$} (s0)
-    (s0) edge node {$\mathtt{coin}/\varnothing$} (s1)
-    (s1) edge node {$\mathtt{coin}/\varnothing$} (s2)
-    (s1) edge node[right] {$\mathtt{select}/\mathtt{dispense}$} (s3)
-    (s2) edge node {$\mathtt{select}/\mathtt{dispense}$} (s3)
-    (s3) edge node[swap, pos=0.4] {$\mathtt{reset}/\varnothing$} (s0)
-    (s2) edge[bend right=50, swap] node[swap] {$\mathtt{refund}/\mathtt{return}$} (s0);
+    (s0) edge[loop left] (s0)
+    (s0) edge (s1)
+    (s1) edge (s2)
+    (s1) edge (s3)
+    (s2) edge (s3)
+    (s3) edge (s0);
+  \draw[->] (s2.north) to[out=135,in=45,looseness=1.35] (s0.north);
+
+  % Explicit labels avoid collisions between converging transitions.
+  \node[font=\scriptsize, fill=white, inner sep=1pt] at (-0.9,0.55) {$\mathtt{timeout}/\varnothing$};
+  \node[font=\scriptsize, fill=white, inner sep=1pt] at (0.95,1.12) {$\mathtt{coin}/\varnothing$};
+  \node[font=\scriptsize, fill=white, inner sep=1pt] at (4.05,1.12) {$\mathtt{coin}/\varnothing$};
+  \node[font=\scriptsize, fill=white, inner sep=1pt] at (1.92,-0.10) {$\mathtt{select}/\mathtt{dispense}$};
+  \node[font=\scriptsize, fill=white, inner sep=1pt] at (4.35,-0.92) {$\mathtt{select}/\mathtt{dispense}$};
+  \node[font=\scriptsize, fill=white, inner sep=1pt] at (0.88,-1.48) {$\mathtt{reset}/\varnothing$};
+  \node[font=\scriptsize, fill=white, inner sep=1pt] at (2.5,2.48) {$\mathtt{refund}/\mathtt{return}$};
 \end{tikzpicture}
