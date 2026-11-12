@@ -21,9 +21,9 @@ There is no guaranteed response or resolution time. The report will be reviewed 
 
 Reports are relevant to security issues in:
 
-- Python scripts in \`scripts/\`.
+- Python scripts in `scripts/`.
 - Dependency declarations and project configuration.
-- GitHub Actions workflows in \`.github/workflows/\`.
+- GitHub Actions workflows in `.github/workflows/`.
 - The document build process and generated build outputs.
 
 The committed PDFs and synthetic dataset are portfolio samples. The repository does not run a production service, process live sensor feeds or store client documents.
