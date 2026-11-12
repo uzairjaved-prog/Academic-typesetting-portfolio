@@ -1,11 +1,11 @@
 # Thesis front matter
 
-This folder contains the title page and abstract used before the main chapters.
-main.tex loads both files near the start of the document.
-The title, author, and date commands are defined in ../preamble.tex.
-Build the complete document from the repository root with make thesis.
-The compiled front matter appears in src/thesis/main.pdf.
-The abstract reports the generated dataset and its in-sample model statistic.
-The title page identifies this as a portfolio example, not a university submission.
-Keep institution and degree claims out unless a real client supplies them.
-Edit the .tex files; do not edit the generated PDF.
+[titlepage.tex](titlepage.tex) provides the title page. [abstract.tex](abstract.tex) contains the abstract and adds it to the table of contents.
+
+The title, author and date are supplied by commands in [../preamble.tex](../preamble.tex). The title page identifies the document as a typesetting demonstration and states that its data are synthetic.
+
+Build the complete thesis from the repository root with:
+
+    make thesis
+
+Edit these two .tex files when the front matter changes. The formatted pages appear in [../main.pdf](../main.pdf) after the thesis has been built.

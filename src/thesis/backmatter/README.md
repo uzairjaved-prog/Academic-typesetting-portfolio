@@ -1,11 +1,11 @@
-# Thesis back matter
+# Thesis appendices
 
-This folder contains the reproducibility appendix and the OLS covariance derivation.
-main.tex includes these files after the main chapters.
-The appendix labels are referenced from the thesis text.
-Build the thesis from the repository root with make thesis.
-The output is src/thesis/main.pdf, copied to dist/thesis.pdf by make all.
-The reproducibility steps assume commands are run from the repository root.
-Shared theorem and equation formatting is defined in ../preamble.tex.
-Edit these .tex files when the appendix content changes.
-Do not edit the compiled PDF or LaTeX auxiliary files by hand.
+[appendix_a.tex](appendix_a.tex) lists the commands used to reproduce the sample. [appendix_b.tex](appendix_b.tex) derives the covariance expression for the ordinary least-squares estimator.
+
+[../main.tex](../main.tex) includes both appendices after the five chapters. Their labels are used in cross-references from the thesis text.
+
+Build from the repository root with:
+
+    make thesis
+
+Edit the appendix source files. The compiled pages appear in [../main.pdf](../main.pdf); the bibliography and index are generated during the build.

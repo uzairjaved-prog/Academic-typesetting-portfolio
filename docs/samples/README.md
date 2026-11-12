@@ -1,10 +1,14 @@
-# Compiled PDF samples
+# PDF samples
 
-This folder contains the committed PDF versions of the journal paper, thesis, and TikZ showcase.
-These files let visitors read the examples without downloading an Actions artifact.
-The PDFs are produced from the LaTeX sources under src/.
-From the repository root, run make clean && make all to rebuild the documents.
-After reviewing the output, run make refresh-samples to copy the new PDFs here.
-The files are paper.pdf, thesis.pdf, and tikz-showcase.pdf.\nThe PDFs are binary build outputs and should not be edited by hand.
-If a source file changes, rebuild all documents and update the samples in a separate commit.
-The research scenario and sensor data in these PDFs are synthetic examples.
+This folder contains the compiled examples linked from the root README:
+
+- [paper.pdf](paper.pdf) — three-page IEEEtran paper.
+- [thesis.pdf](thesis.pdf) — sixteen-page thesis-layout sample.
+- [tikz-showcase.pdf](tikz-showcase.pdf) — two-page collection of TikZ and PGFPlots diagrams.
+
+The LaTeX sources are in [../../src/](../../src/). Rebuild the PDFs from the repository root with:
+
+    make clean
+    make all
+
+After inspecting the output, run make refresh-samples to update these committed copies. The PDFs are compiled output, not editable source.
