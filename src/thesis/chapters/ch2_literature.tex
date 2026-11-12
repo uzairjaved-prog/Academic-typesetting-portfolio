@@ -1,26 +1,31 @@
-\chapter{Literature and Background}\label{ch:lit}
-\section{Scientific Python Stack}
-Tabular data handling follows \texttt{pandas}~\cite{mckinney2010pandas}; plots use Matplotlib~\cite{hunter2007matplotlib} and seaborn~\cite{waskom2021seaborn}. Palettes are chosen for colour-vision deficiency~\cite{wong2011color}.
+\chapter{Background and Tools}\label{ch:lit}
 
-\section{Sequence Models}
-Attention-based architectures~\cite{vaswani2017attention} replaced recurrence in many forecasting pipelines. \Cref{fig:transformer-thesis} sketches the encoder stack, drawn natively in TikZ.
+\section{Scientific Python}
+The data-generation and plotting scripts use pandas\index{pandas} for tabular data~\cite{mckinney2010pandas}, Matplotlib\index{Matplotlib}~\cite{hunter2007matplotlib}, and seaborn\index{seaborn}~\cite{waskom2021seaborn}. The charts use a colour palette designed to remain distinguishable for readers with common forms of colour-vision deficiency~\cite{wong2011color}.
 
-\begin{figure}[t]\centering
+\section{Attention Models}
+The Transformer\index{Transformer} architecture was introduced by Vaswani et al.~\cite{vaswani2017attention}. \Cref{fig:transformer-thesis} is a simplified encoder diagram drawn with TikZ. It is included as a vector-graphics example, not as part of the power-demand model.
+
+\begin{figure}[htbp]
+  \centering
   \resizebox{0.55\textwidth}{!}{\input{../tikz/transformer}}
-  \caption{Transformer encoder stack with residual connections.}\label{fig:transformer-thesis}
+  \caption{Simplified Transformer encoder stack with residual connections.}
+  \label{fig:transformer-thesis}
 \end{figure}
 
-\section{Estimation Theory}\index{least squares}
-For a linear model $\bm y=\bm X\bm\beta+\bm\varepsilon$ the least-squares estimator attains the Cram\'er--Rao bound under Gaussian noise~\cite{kay1993estimation}.
+\section{Least Squares}\index{least squares}
+For a full-rank design matrix, ordinary least squares has a closed-form estimator. Its expectation and covariance follow from the linear model assumptions; a standard treatment is given by Kay~\cite{kay1993estimation}. The proposition in \cref{prop:ols} states these estimator properties. It does not select a particular regression model.
 
 \begin{definition}[Hinge feature]
-For threshold $\tau$ the hinge feature of temperature $T$ is $h(T)=\max(T-\tau,0)$.
+For a threshold $\tau$, the hinge feature of temperature $T$ is $h(T)=\max(T-\tau,0)$.
 \end{definition}
 
-\section{Control Background}\index{PID control}
-Classical feedback design is covered by Ogata~\cite{ogata2010modern}. A supervisory finite-state machine~\cite{hopcroft2006automata} can switch controller modes (\cref{fig:fsm-thesis}).
+\section{Feedback Control}\index{PID control}
+A proportional--integral--derivative (PID) controller\index{PID controller} is a standard feedback-control structure; Ogata provides an introduction~\cite{ogata2010modern}. A finite-state machine can represent supervisory mode changes~\cite{hopcroft2006automata}. The diagram in \cref{fig:fsm-thesis} is a small illustrative state machine.
 
-\begin{figure}[t]\centering
+\begin{figure}[htbp]
+  \centering
   \resizebox{0.8\textwidth}{!}{\input{../tikz/fsm}}
-  \caption{Supervisory finite-state machine.}\label{fig:fsm-thesis}
+  \caption{Example finite-state machine with labelled transitions.}
+  \label{fig:fsm-thesis}
 \end{figure}

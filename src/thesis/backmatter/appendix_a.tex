@@ -1,7 +1,9 @@
 \chapter{Reproducibility}\label{app:repro}
-Regenerate data and figures, then build:
+
+From the repository root, install the Python requirements and build all three documents. The OLS covariance derivation is in \cref{app:deriv}:
 \begin{verbatim}
-python scripts/make_data.py
-python scripts/generate_figures.py
-cd src/thesis && latexmk -pdf main.tex
+pip install -r requirements.txt
+make clean
+make all
 \end{verbatim}
+The data are recreated with \texttt{python scripts/make\_data.py}. The figures and LaTeX tables are recreated with \texttt{python scripts/generate\_figures.py}. To update the committed PDF samples and JPG previews after a successful build, run \texttt{make refresh-samples}.

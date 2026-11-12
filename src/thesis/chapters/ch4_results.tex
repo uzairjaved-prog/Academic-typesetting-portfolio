@@ -1,19 +1,40 @@
 \chapter{Results}\label{ch:results}
-\section{Exploratory Analysis}
-Temperature and power correlate strongly ($r=\rTP$, \cref{fig:res-panels}(b)). Site differences appear in \cref{fig:res-panels}(c) and \cref{tab:res-summary}.
 
-\begin{figure}[t]\centering
-  \begin{subfigure}[t]{0.48\textwidth}\includegraphics[width=\linewidth]{fig_panel_a.pdf}\caption{Time series.}\end{subfigure}\hfill
-  \begin{subfigure}[t]{0.48\textwidth}\includegraphics[width=\linewidth]{fig_panel_b.pdf}\caption{Correlations.}\end{subfigure}\\[4pt]
-  \begin{subfigure}[t]{0.48\textwidth}\includegraphics[width=\linewidth]{fig_panel_c.pdf}\caption{Per-site distribution.}\end{subfigure}\hfill
-  \begin{subfigure}[t]{0.48\textwidth}\includegraphics[width=\linewidth]{fig_panel_d.pdf}\caption{Power vs.\ temperature.}\end{subfigure}
-  \caption{Exploratory analysis of the sensor dataset.}\label{fig:res-panels}
+\section{Exploratory Summaries}
+Temperature and power have a positive Pearson correlation\index{correlation coefficient} in this generated dataset ($r=\rTP$; \cref{fig:res-panels}). The hinge regression has an in-sample coefficient of determination\index{coefficient of determination} of $R^2=\hingeRtwo$. This is a summary of the same rows used to fit the model, not an estimate of performance on unseen measurements.
+
+\Cref{fig:res-panels} contains four views of the synthetic data: the daily power series in panel (a), the variable-correlation matrix in panel (b), the site distributions in panel (c), and power against temperature in panel (d). The final panel shows both the fitted hinge curve and a dashed linear baseline. Per-site counts and summary values are listed in \cref{tab:res-summary}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{fig_panel_a.pdf}
+    \caption{Daily mean power.}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{fig_panel_b.pdf}
+    \caption{Correlation matrix.}
+  \end{subfigure}\\[4pt]
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{fig_panel_c.pdf}
+    \caption{Power by site.}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\linewidth]{fig_panel_d.pdf}
+    \caption{Power against temperature.}
+  \end{subfigure}
+  \caption{Four summaries generated from the synthetic hourly dataset. Panel (d) shows the fitted hinge curve and the linear baseline.}
+  \label{fig:res-panels}
 \end{figure}
 
-\begin{table}[t]\centering
-  \caption{Per-site summary statistics.}\label{tab:res-summary}
+\begin{table}[htbp]
+  \centering
+  \caption{Summary statistics by example site.}
+  \label{tab:res-summary}
   \input{../../figures/summary_table}
 \end{table}
 
 \section{Discussion}
-Site~B has the highest mean power, matching its positive offset in the generating process. The strong correlation justifies the hinge model of \cref{prop:ols}.
+Site B has the highest mean power in this generated sample. The data-generation script adds a positive site offset\index{site offset} to Site B, so this difference is built into the example. The correlation and $R^2$ describe the generated rows; they do not establish a causal relationship or validate a forecast for a real site.
+
+Proposition \cref{prop:ols} concerns the unbiasedness and covariance of the ordinary least-squares estimator under its stated assumptions. It is a result about the estimator, not evidence that the hinge specification is the correct model for real measurements.
