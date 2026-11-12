@@ -1,11 +1,14 @@
 # Python scripts
 
-make_data.py creates the fixed-seed synthetic hourly dataset in data/.
-generate_figures.py interpolates the inserted gaps and creates the PDF/SVG panels and LaTeX tables.
-Its scatter panel shows a grid-searched hinge fit and a dashed linear baseline.
-The generated key_numbers.tex includes the observation count, correlation, and hinge-fit R-squared.
-Run make data to create the CSV and make figures to generate the charts and table.
-Run make previews to render the PDFs into dist/previews/.
-Run make before-after to create the unstyled and styled scatter comparison under dist/previews/before-after/.
-make all runs the complete production pipeline.
-Generated CSV, figures, tables, and preview files are outputs; do not edit them by hand.
+[make_data.py](make_data.py) writes the synthetic CSV at [../data/](../data/). It creates 2,880 hourly rows for 120 days and three example sites.
+
+[generate_figures.py](generate_figures.py) fills the 50 inserted missing values by time-ordered interpolation. It writes four figure panels, a combined chart, the summary table and key_numbers.tex under the repository-root figures/ folder.
+
+[make_previews.py](make_previews.py) renders the built PDFs and combined chart as JPGs in the repository-root dist/previews/ folder.
+
+From the repository root, run:
+
+    make clean
+    make all
+
+make before-after creates a separate SVG comparison in dist/previews/before-after/. These CSV, chart, table and preview files are generated outputs.

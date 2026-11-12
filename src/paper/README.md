@@ -1,11 +1,13 @@
-# Journal paper source
+# Journal paper
 
-main.tex is the entry point for the IEEEtran journal-style example.
-references.bib contains the bibliography records cited by the paper.
-The text and figures describe a synthetic dataset, not real site measurements.
-From the repository root, build it with make paper.
-The equivalent command is latexmk -pdf -cd -interaction=nonstopmode -halt-on-error src/paper/main.tex.
-The generated PDF is src/paper/main.pdf; make all copies it to dist/paper.pdf.
-The paper imports shared TikZ styles and generated figure macros from sibling folders.
-Run make figures before compiling if the CSV or figure outputs have been cleaned.
-Do not edit main.pdf, .aux, .bbl, or .log files by hand.
+[main.tex](main.tex) is the entry point. [references.bib](references.bib) contains the bibliography records cited in the paper.
+
+The document uses the IEEEtran journal class. It includes a two-column layout, mathematical notation, references, a summary table and four data panels. The research scenario and observations are synthetic.
+
+From the repository root, run:
+
+    make paper
+
+The build first runs the data and figure targets. It creates main.pdf in this folder and copies a second copy to the repository-root dist/paper.pdf when make all is used.
+
+Edit main.tex and references.bib. The PDF, .aux, .bbl and .log files are produced by the build.

@@ -1,12 +1,12 @@
-# LaTeX source projects
+# LaTeX sources
 
-This directory contains the paper, thesis, and standalone TikZ showcase.
-Each project has its own main .tex file and local supporting files.
-The paper uses the IEEEtran journal class.
-The thesis uses the book class and includes separate chapter files.
-The TikZ showcase compiles the diagrams without the paper or thesis.
-Build all three from the repository root with make all.
-Build one project with make paper, make thesis, or make tikz.
-The PDFs are written under src/ during compilation and copied to dist/.
-Generated PDFs and LaTeX auxiliary files are build products; do not edit them.
-Edit the .tex sources and rebuild to change document content.
+This folder contains the source for the journal paper, thesis and standalone TikZ showcase.
+The [paper](paper/README.md) uses IEEEtran.
+The [thesis](thesis/README.md) uses the book class and is split into a preamble, front matter, chapters and appendices.
+The [TikZ showcase](tikz/README.md) compiles the diagrams without either document.
+
+From the repository root, build everything with:
+
+    make all
+
+Build one document with make paper, make thesis or make tikz. The Makefile copies the PDFs to the repository-root dist/ folder. Edit the .tex source files; LaTeX auxiliary files and compiled PDFs are build outputs.

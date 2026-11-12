@@ -1,10 +1,10 @@
 # GitHub configuration
 
-This folder contains issue templates and the automated PDF workflow.
-GitHub reads the issue templates when a visitor opens a new issue.
-The workflow file under workflows/ lints Python and builds the sample documents.
-The workflow runs on pushes to main, pull requests, tags, and manual dispatch.
-The CI steps are documented in workflows/README.md.
-Repository branch protection is configured in GitHub settings, not in these files.
-Edit workflow or template files only when their behaviour needs to change.
-Do not store tokens, credentials, or private client material in this folder.
+This folder contains the repository's GitHub-specific files.
+The PDF build is defined in [workflows/build-pdf.yml](workflows/build-pdf.yml).
+It runs Ruff, creates the sample data and figures, compiles the three PDFs and checks the LaTeX logs.
+The workflow runs for pull requests, pushes to main, version tags, releases and manual dispatches.
+Its steps are described in [workflows/README.md](workflows/README.md).
+Branch protection is configured in the repository settings, not in this folder.
+Changes to the workflow should be tested with a pull request before merging.
+Do not put credentials or private client files in the repository configuration.

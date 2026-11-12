@@ -1,10 +1,13 @@
-# Portfolio documents
+# Portfolio files
 
-This folder contains the compiled PDF samples, committed JPG previews, and scope notes.
-samples/ holds the paper, thesis, and TikZ showcase PDFs tracked by Git.
-previews/ holds the JPG images embedded in the root README.
-PREMIUM_BUNDLE.md is the neutral description of the example service areas and project inputs.
-From the repository root, run make all to build PDFs in dist/ and JPGs in dist/previews/.
-After checking the build, run make refresh-samples to copy the outputs into the committed folders.
-The committed PDFs and JPGs are refreshed from the source; do not edit them by hand.
-The synthetic-data notice applies to the paper, thesis, and scientific figures.
+This folder holds the files visitors can open without running the build.
+
+- [samples/](samples/) contains the paper, thesis and TikZ showcase PDFs.
+- [previews/](previews/) contains the five JPG images used in the root README.
+- [PREMIUM_BUNDLE.md](PREMIUM_BUNDLE.md) describes the work shown in the examples and the information needed to scope a project.
+
+The build creates fresh PDFs in the repository-root dist/ folder and JPGs in dist/previews/. After checking the results, copy them into the tracked folders with:
+
+    make refresh-samples
+
+The PDFs and JPGs here are committed copies of generated output. Rebuild them from the LaTeX and Python sources rather than editing the binary files directly.
