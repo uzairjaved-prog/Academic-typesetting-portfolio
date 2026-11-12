@@ -1,139 +1,255 @@
-# Academic Typesetting Portfolio
+<div align="center">
+  <h1>Academic Typesetting Portfolio</h1>
+  <p><strong>Examples of academic documents, technical diagrams and research figures built with LaTeX and Python.</strong></p>
+  <p>
+    <a href="https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml"><img src="https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml/badge.svg" alt="PDF build status"></a>
+    <a href="https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest"><img src="https://img.shields.io/github/v/release/uzairjaved-prog/Academic-typesetting-portfolio?label=latest%20release" alt="Latest release"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
+    <a href="https://github.com/uzairjaved-prog/Academic-typesetting-portfolio"><img src="https://img.shields.io/github/last-commit/uzairjaved-prog/Academic-typesetting-portfolio" alt="Last commit"></a>
+  </p>
+  <p>
+    <a href="#selected-work">Selected work</a> &nbsp;·&nbsp;
+    <a href="#services-shown-in-this-portfolio">Services</a> &nbsp;·&nbsp;
+    <a href="#build-from-source">Build instructions</a> &nbsp;·&nbsp;
+    <a href="#contact">Contact</a>
+  </p>
+</div>
 
-[![PDF build](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/actions/workflows/build-pdf.yml)
-[![Latest release](https://img.shields.io/github/v/release/uzairjaved-prog/Academic-typesetting-portfolio)](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/releases/latest)
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<p align="center">
+  <img src="docs/previews/portfolio-overview.jpg" alt="Overview of the academic paper, thesis, TikZ diagrams and scientific figures in this portfolio" width="100%">
+</p>
 
-This repository is a portfolio of academic typesetting examples. It contains a journal-paper layout, a thesis layout, TikZ/PGFPlots diagrams and a small Python figure pipeline. The PDFs are committed so they can be read directly on GitHub; the source files are included for inspection and rebuilding.
+This repository brings together three complete document samples and the source used to produce them. It is intended to let a reader inspect both sides of the work: the finished PDF and the LaTeX or Python files behind it.
 
-The examples show how I handle document structure, mathematical notation, references, tables, diagrams and figures in LaTeX. They are samples of formatting and production work, not published research.
+The examples cover an IEEE-style paper, a multi-file thesis, TikZ diagrams and a small scientific-figure pipeline. The PDFs are committed in the repository, so they can be opened without installing a TeX distribution or running the build.
 
-> **Sample-data notice:** the research scenario and sensor readings are synthetic. A fixed-seed script generates all observations. They do not come from a real building, monitoring system, client project or experiment. The charts and fitted model are included to demonstrate the workflow; they should not be cited as empirical findings.
+> **About the example data:** the research scenario and all sensor readings are synthetic. A fixed-seed script generates the observations for these demonstrations. They are not taken from a real building, monitoring system, client project or experiment. The charts and fitted model illustrate a document-production workflow; they must not be cited as empirical research findings.
 
-## Selected PDF samples
+---
 
-Each link opens the PDF committed under docs/samples/. Page counts refer to the current committed versions.
+## Contents
 
-| Sample | Pages | What to look for |
+- [Selected work](#selected-work)
+  - [Journal paper](#1-journal-paper)
+  - [Thesis layout](#2-thesis-layout)
+  - [TikZ and PGFPlots showcase](#3-tikz-and-pgfplots-showcase)
+  - [Scientific figures](#4-scientific-figures)
+- [Services shown in this portfolio](#services-shown-in-this-portfolio)
+- [How the example analysis works](#how-the-example-analysis-works)
+- [Build from source](#build-from-source)
+- [Continuous integration](#continuous-integration)
+- [Repository guide](#repository-guide)
+- [Contributing](#contributing)
+- [Security](#security)
+- [License](#license)
+- [Contact](#contact)
+
+---
+
+## Selected work
+
+The following PDFs are the versions currently committed under <code>docs/samples/</code>. Page counts refer to those files.
+
+| Sample | Length | PDF |
 |---|---:|---|
-| [**Journal paper**](docs/samples/paper.pdf) | 3 | IEEE two-column layout, equations, cross-references, bibliography, summary table and four-panel figure. |
-| [**Thesis layout**](docs/samples/thesis.pdf) | 16 | Title page, abstract, contents, list of figures, five chapters, two appendices, bibliography and index. |
-| [**TikZ showcase**](docs/samples/tikz-showcase.pdf) | 2 | Transformer encoder, finite-state machine, PID block diagram and PGFPlots step-response curves. |
+| **IEEE-style journal paper** | 3 pages | [Open paper.pdf](docs/samples/paper.pdf) |
+| **Thesis layout** | 16 pages | [Open thesis.pdf](docs/samples/thesis.pdf) |
+| **TikZ showcase** | 2 pages | [Open tikz-showcase.pdf](docs/samples/tikz-showcase.pdf) |
 
-### Journal paper
+### 1. Journal paper
 
-[![First page of the journal-paper sample](docs/previews/paper-page-1.jpg)](docs/samples/paper.pdf)
+<p align="center">
+  <a href="docs/samples/paper.pdf">
+    <img src="docs/previews/paper-page-1.jpg" alt="First page of the three-page IEEE-style paper" width="620">
+  </a>
+</p>
 
-The paper uses the IEEEtran class. Its example regression is a hinge model: the script searches candidate thresholds and solves the coefficients by least squares. The scatter panel shows that fit together with a dashed linear baseline. The generated numbers describe only the synthetic rows used to make the figure.
+The paper uses the IEEEtran class and a two-column journal layout. It includes an abstract, section hierarchy, displayed equations, cross-references, a bibliography, a summary table and a four-panel figure.
 
-### Thesis layout
+The example analysis uses a piecewise-linear hinge model. The figure-generation script searches candidate threshold values, solves the coefficients by least squares for each candidate, and keeps the fit with the smallest residual sum of squares. The scatter panel also shows a dashed linear baseline. All plotted observations are generated by the repository's data script.
 
-[![Title page of the thesis sample](docs/previews/thesis-cover.jpg)](docs/samples/thesis.pdf)
+**Source:** [main.tex](src/paper/main.tex) · [references.bib](src/paper/references.bib)  
+**PDF:** [paper.pdf](docs/samples/paper.pdf)
 
-The thesis is organized as a multi-file book project. The title page and abstract are separate from the five chapters and appendices. It includes a bibliography, index, figure list, equations, tables and diagrams. The front page identifies it as a portfolio demonstration; it does not claim a university affiliation or degree.
+### 2. Thesis layout
 
-### TikZ and PGFPlots
+<p align="center">
+  <a href="docs/samples/thesis.pdf">
+    <img src="docs/previews/thesis-cover.jpg" alt="Cover page of the sixteen-page thesis layout sample" width="420">
+  </a>
+</p>
 
-[![TikZ diagram gallery](docs/previews/tikz-gallery.jpg)](docs/samples/tikz-showcase.pdf)
+The thesis is a multi-file book project rather than a single long source file. Its 16 pages include a title page, abstract, contents, list of figures, five chapters, two appendices, bibliography and index.
 
-The standalone showcase contains vector diagrams written in TikZ. Shared node and arrow styles live in src/tikz/tikz-styles.tex. The same diagram source files are imported by the paper and thesis.
+The source separates the document preamble, front matter, chapters and back matter. This makes the order of the document easier to follow and allows individual sections to be edited without changing the root file. The title page identifies the work as a portfolio demonstration; it does not claim a university affiliation or degree.
 
-### Scientific figures
+**Source:** [thesis main file](src/thesis/main.tex) · [preamble](src/thesis/preamble.tex)  
+**PDF:** [thesis.pdf](docs/samples/thesis.pdf)
 
-![Scientific figure overview](docs/previews/scientific-figures.jpg)
+### 3. TikZ and PGFPlots showcase
 
-The Python pipeline creates four panels: daily mean power, a variable-correlation matrix, power distributions for three example sites, and power against temperature. The last panel shows both the fitted hinge curve and the linear baseline. The corresponding LaTeX table and numeric macros are generated by [scripts/generate_figures.py](scripts/generate_figures.py).
+<p align="center">
+  <a href="docs/samples/tikz-showcase.pdf">
+    <img src="docs/previews/tikz-gallery.jpg" alt="Gallery of TikZ diagrams from the standalone showcase" width="620">
+  </a>
+</p>
 
-## What the examples demonstrate
+The two-page showcase contains a transformer encoder diagram, a finite-state machine, a feedback-control block diagram and PGFPlots step-response curves. The diagrams are authored as LaTeX source and remain vector graphics in the compiled PDF.
 
-The files in this repository provide examples of:
+Shared drawing styles are kept in one file and reused by the standalone showcase, paper and thesis.
 
-- **Paper and thesis layout:** page structure, section hierarchy, running headers, front matter, appendices, bibliography and index.
-- **Mathematical typesetting:** aligned equations, matrices, operators, theorem environments and cross-references.
-- **Bibliographies and tables:** BibTeX records, citation styles, booktabs rules and siunitx column formatting.
-- **TikZ and PGFPlots:** diagrams and plotted curves that remain vector graphics in the PDF.
-- **Python-generated figures:** data preparation, Matplotlib/Seaborn charts, summary statistics and LaTeX integration.
+**Source:** [showcase.tex](src/tikz/showcase.tex) · [shared styles](src/tikz/tikz-styles.tex)  
+**PDF:** [tikz-showcase.pdf](docs/samples/tikz-showcase.pdf)
 
-These examples show the source alongside the finished output. A client project may need a different class, institutional template, reference style, figure format or build process. The supplied manuscript and submission instructions determine those details.
+### 4. Scientific figures
 
-For a description of the example work and the information needed to scope a project, see [Services and scope](docs/PREMIUM_BUNDLE.md).
+<p align="center">
+  <img src="docs/previews/scientific-figures.jpg" alt="Four-panel overview of the Python-generated scientific figures" width="760">
+</p>
 
-## How the sample data are made
+The Python pipeline produces four panels from the generated dataset:
 
-The data generator creates 2,880 hourly rows covering 120 days and assigns each row to one of three example sites. It calculates temperature, humidity, power and vibration values, then inserts 25 missing temperature values and 25 missing power values. scripts/generate_figures.py fills those gaps by interpolation before producing the figures and summary table.
+1. Daily mean power over time.
+2. A correlation matrix for the example variables.
+3. Power distributions for three example sites.
+4. Power against temperature, with a fitted hinge curve and a dashed linear baseline.
 
-The hinge threshold is selected by a grid search. For each candidate threshold, the script solves the intercept and slope by least squares and keeps the fit with the lowest residual sum of squares. The reported R-squared is calculated on those same generated observations. It is not a validation score for unseen data, and the example does not establish a causal relationship.
+It also writes a summary table and numeric LaTeX macros used by the documents. The scripts keep the figure generation separate from the paper and thesis source.
 
-The PID block diagram and second-order step-response plot are separate control-theory illustrations. No controller is fitted to the sensor data or tested on a physical system.
+**Source:** [generate_figures.py](scripts/generate_figures.py) · [data generator](scripts/make_data.py)
 
-## Build the documents locally
+---
 
-The project uses Python 3.10 or newer, TeX Live or MiKTeX with latexmk, and Poppler's pdftoppm utility for preview rendering.
+## Services shown in this portfolio
 
-From the repository root, install the Python dependencies and build all three PDFs:
+The samples provide a practical view of the typesetting work represented here. They are examples, not fixed packages or a claim that every project uses the same template.
 
-    python -m pip install -r requirements.txt
-    make clean
-    make all
+| Area | Work visible in the samples |
+|---|---|
+| **Research paper formatting** | Two-column layout, section styles, equations, references, tables and figures. |
+| **Thesis and dissertation layout** | Title page, front matter, chapter structure, appendices, bibliography, figure list and index. |
+| **Mathematical typesetting** | Aligned equations, matrices, operators, theorem environments, numbering and cross-references. |
+| **TikZ diagrams and PGFPlots** | Structured diagrams, flow and control diagrams, state machines and plotted curves. |
+| **Scientific figures and tables** | Python-generated charts, summary statistics and LaTeX-ready figure/table output. |
+
+For a project enquiry, the most useful starting material is the manuscript or source file, the target journal or institutional template, any submission instructions, the bibliography, and the figures or data that should appear in the document. The required template and supplied material determine the final scope.
+
+More detail is available in [Services and scope](docs/PREMIUM_BUNDLE.md).
+
+## How the example analysis works
+
+The data generator creates **2,880 hourly rows** covering **120 days** and assigns the rows to three example sites. It generates temperature, humidity, power and vibration values, then inserts 25 missing temperature values and 25 missing power values. The figure-generation script fills those gaps by time-ordered interpolation before calculating the summaries and drawing the charts.
+
+For the scatter plot, the script searches a grid of possible hinge thresholds. At each threshold it solves the intercept and slope by least squares, then retains the candidate with the lowest residual sum of squares. The reported R-squared is calculated on the same generated observations used for fitting. It is not a test on unseen data, a measure of predictive performance, or evidence of a causal relationship.
+
+The PID block diagram and second-order step-response plot are separate control-theory illustrations. No controller is fitted to the generated sensor data or tested on a physical system.
+
+## Build from source
+
+You can read the committed PDFs without installing anything. To regenerate them, use Python 3.10 or newer, TeX Live or MiKTeX with <code>latexmk</code>, and Poppler's <code>pdftoppm</code> utility for preview rendering.
+
+### 1. Install Python dependencies
+
+Run these commands from the repository root:
+
+~~~bash
+python -m pip install -r requirements.txt
+~~~
+
+### 2. Build all three documents
+
+~~~bash
+make clean
+make all
+~~~
 
 The main Makefile targets are:
 
-| Command | Result |
+| Command | Output |
 |---|---|
-| make data | Creates data/sensor_experiment.csv. |
-| make figures | Creates the figure panels, combined chart, summary table and numeric macros under figures/. |
-| make paper | Builds the IEEEtran paper. |
-| make thesis | Builds the multi-file thesis. |
-| make tikz | Builds the standalone TikZ showcase. |
-| make previews | Renders the PDFs and figure overview to dist/previews/. |
-| make before-after | Creates an unstyled/styled scatter comparison under dist/previews/before-after/. |
-| make clean | Removes LaTeX auxiliary files and the contents of dist/. |
+| <code>make data</code> | Creates <code>data/sensor_experiment.csv</code>. |
+| <code>make figures</code> | Creates figure panels, a combined chart, a summary table and numeric macros under <code>figures/</code>. |
+| <code>make paper</code> | Builds the IEEE-style paper. |
+| <code>make thesis</code> | Builds the multi-file thesis. |
+| <code>make tikz</code> | Builds the standalone TikZ showcase. |
+| <code>make previews</code> | Renders PDFs and the figure overview under <code>dist/previews/</code>. |
+| <code>make before-after</code> | Creates the scatter-plot comparison under <code>dist/previews/before-after/</code>. |
+| <code>make refresh-samples</code> | Copies reviewed PDFs and JPG previews into the committed folders under <code>docs/</code>. |
+| <code>make clean</code> | Removes LaTeX auxiliary files and generated contents of <code>dist/</code>. |
 
-The build writes the current PDFs to dist/ and preview images to dist/previews/. The versions in docs/samples/ and docs/previews/ are the committed copies displayed in this README. After reviewing a successful build, update those copies with:
+### Where the files go
 
-    make refresh-samples
+| Location | Purpose |
+|---|---|
+| <code>dist/</code> | Fresh PDFs produced by the local build. |
+| <code>dist/previews/</code> | Preview images rendered during the build. |
+| <code>figures/</code> | Generated charts, tables and LaTeX numeric macros. |
+| <code>data/sensor_experiment.csv</code> | Generated synthetic dataset. |
+| <code>docs/samples/</code> | Reviewed PDF copies committed for visitors to read. |
+| <code>docs/previews/</code> | Reviewed JPG copies used in this README. |
 
-Generated CSVs, figures, LaTeX auxiliary files and dist/ outputs are build products. Edit the source scripts and .tex files, then rebuild; do not edit generated files by hand.
+The files under <code>dist/</code>, <code>figures/</code> and the generated CSV are build products. Edit the source scripts and <code>.tex</code> files, then rebuild them. Do not edit generated outputs by hand. When a source change affects a sample, inspect the new PDFs and images before running <code>make refresh-samples</code>; review the resulting binary changes before committing them.
+
+For the Python style check, run:
+
+~~~bash
+ruff check scripts
+~~~
 
 ## Continuous integration
 
-GitHub Actions runs on pull requests, pushes to main, version tags, published releases and manual dispatches. The workflow:
+The GitHub Actions workflow in [build-pdf.yml](.github/workflows/build-pdf.yml) checks the project when a pull request is opened or updated, when changes reach <code>main</code>, and for the configured release and manual events.
 
-1. Runs ruff check scripts.
+The workflow:
+
+1. Runs Ruff against the Python scripts.
 2. Generates the synthetic dataset and figures.
 3. Compiles the paper, thesis and TikZ showcase.
-4. Checks the logs for undefined references and citations.
-5. Collects PDFs and checksums, renders previews and uploads an artifact named pdfs.
+4. Checks LaTeX logs for undefined references and citations.
+5. Collects PDFs and checksums, renders previews, and uploads an artifact named <code>pdfs</code>.
 
-The Actions artifact is retained for 30 days. Publishing a version tag also creates a GitHub Release containing the sample PDFs, checksums and preview JPGs.
+The workflow artifact is temporary and is retained for 30 days. Publishing a version tag also creates a GitHub Release containing the sample PDFs, checksums and preview images. The release files provide a convenient download; the copies in <code>docs/samples/</code> remain part of the repository itself.
 
-See the [build workflow](.github/workflows/build-pdf.yml) for the exact commands and package list.
+## Repository guide
 
-## Repository structure
+The root README is the entry point. Each main source and output directory has a short guide with its contents and build instructions.
 
-| Path | Contents |
+| Location | What is there |
 |---|---|
+| [src/](src/README.md) | LaTeX source projects. |
 | [src/paper/](src/paper/README.md) | IEEEtran paper and bibliography. |
-| [src/thesis/](src/thesis/README.md) | Thesis root file, preamble, front matter, chapters and appendices. |
-| [src/tikz/](src/tikz/README.md) | Shared TikZ styles and diagram sources. |
-| [scripts/](scripts/README.md) | Data generation, figure generation, PDF previews and before/after comparison. |
-| [data/](data/README.md) | Notes about the generated CSV; the CSV itself is recreated by the script. |
+| [src/thesis/](src/thesis/README.md) | Thesis root file, preamble and included sections. |
+| [src/thesis/frontmatter/](src/thesis/frontmatter/README.md) | Title page and abstract. |
+| [src/thesis/chapters/](src/thesis/chapters/README.md) | Five thesis chapters. |
+| [src/thesis/backmatter/](src/thesis/backmatter/README.md) | Appendices and back matter. |
+| [src/tikz/](src/tikz/README.md) | TikZ diagrams and shared drawing styles. |
+| [scripts/](scripts/README.md) | Data, figure and preview-generation scripts. |
+| [data/](data/README.md) | Information about the generated dataset. |
+| [docs/](docs/README.md) | Files prepared for visitors to browse. |
 | [docs/samples/](docs/samples/README.md) | Committed PDF samples. |
-| [docs/previews/](docs/previews/README.md) | Committed JPGs used in this README. |
-| [.github/workflows/](.github/workflows/README.md) | GitHub Actions build and release workflow. |
+| [docs/previews/](docs/previews/README.md) | Committed JPG previews used above. |
+| [.github/workflows/](.github/workflows/README.md) | Automated build and release workflow. |
 
-## Contributing and reporting issues
+## Contributing
 
-Corrections to the examples, build instructions and documentation are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Bug reports and feature requests can be submitted through the [Issues page](https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/issues).
+Corrections to the LaTeX examples, diagrams, scripts, build instructions and documentation are welcome. Before proposing a change, read [CONTRIBUTING.md](CONTRIBUTING.md). It explains the local checks, generated files and pull-request process.
+
+Please keep the examples reproducible and the descriptions accurate. Do not replace the synthetic-data notice with claims about real measurements, client results or published research.
 
 ## Security
 
-Please do not publish credentials, private manuscripts or sensitive client data in an issue. For a suspected security problem, follow the private reporting instructions in [SECURITY.md](SECURITY.md).
+Do not put passwords, access tokens, private manuscripts or client data in issues or pull requests. This repository has GitHub private vulnerability reporting enabled. To report a suspected security issue, open the repository's **Security** tab and choose **Report a vulnerability**. See [SECURITY.md](SECURITY.md) for the scope and reporting guidance.
 
 ## License
 
-The repository is released under the [MIT License](LICENSE). The synthetic-data notice above still applies: the sample values are generated for demonstration and are not real measurements.
+The repository is distributed under the [MIT License](LICENSE). The license does not change the status of the sample data: the observations are generated for demonstration and are not real measurements.
 
 ## Contact
 
-For enquiries about LaTeX paper formatting, thesis layout, mathematical typesetting, TikZ diagrams or research figures, use the [GitHub profile](https://github.com/uzairjaved-prog).
+For enquiries about the work shown here, use the [GitHub profile](https://github.com/uzairjaved-prog). A first message can include the document type, target template, approximate length and any relevant submission instructions. No email address or other contact channel is assumed by this repository.
+
+---
+
+<div align="center">
+  <sub>Built with LaTeX, TikZ, PGFPlots, Python and GitHub Actions.</sub>
+</div>
