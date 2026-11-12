@@ -1,27 +1,42 @@
-"""Create docs/previews/*: a 'before' (matplotlib defaults) vs 'after' (publication style) comparison."""
-import importlib.util
+"""Compare an unstyled scatter plot with the publication-style figure.
+
+Run python scripts/make_data.py first. SVG outputs are written to
+dist/previews/before-after/ and are local build products, not committed
+portfolio previews.
+"""
 from pathlib import Path
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
+from generate_figures import load, panel_scatter, setup_style
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "docs" / "previews"; OUT.mkdir(parents=True, exist_ok=True)
-df = pd.read_csv(ROOT / "data" / "sensor_experiment.csv", parse_dates=["timestamp"]).dropna()
+DATA = ROOT / "data" / "sensor_experiment.csv"
+OUTPUT = ROOT / "dist" / "previews" / "before-after"
 
-mpl.rcdefaults()
-fig, ax = plt.subplots(figsize=(3.4, 2.4))
-ax.scatter(df.temperature_c, df.power_w, s=10)            # defaults: overplotted, no site info, tiny fonts at print size
-ax.set_xlabel("temperature_c"); ax.set_ylabel("power_w")
-fig.savefig(OUT / "figure_before.svg", bbox_inches="tight")
-plt.close(fig)
 
-spec = importlib.util.spec_from_file_location("gf", ROOT / "scripts" / "generate_figures.py")
-gf = importlib.util.module_from_spec(spec); spec.loader.exec_module(gf)
-gf.setup_style(); mpl.rcParams["svg.fonttype"] = "path"
-d = gf.load()
-fig, ax = plt.subplots(figsize=(3.4, 2.4), constrained_layout=True)
-gf.panel_scatter(ax, d)
-fig.savefig(OUT / "figure_after.svg", bbox_inches="tight")
-print("wrote previews")
+def main() -> None:
+    """Create the before-and-after SVG comparison."""
+    OUTPUT.mkdir(parents=True, exist_ok=True)
+    raw = pd.read_csv(DATA, parse_dates=["timestamp"]).dropna()
+
+    mpl.rcdefaults()
+    figure, axis = plt.subplots(figsize=(3.4, 2.4))
+    axis.scatter(raw["temperature_c"], raw["power_w"], s=10)
+    axis.set_xlabel("temperature_c")
+    axis.set_ylabel("power_w")
+    figure.savefig(OUTPUT / "figure_before.svg", bbox_inches="tight")
+    plt.close(figure)
+
+    setup_style()
+    data = load()
+    figure, axis = plt.subplots(figsize=(3.4, 2.4), constrained_layout=True)
+    panel_scatter(axis, data)
+    figure.savefig(OUTPUT / "figure_after.svg", bbox_inches="tight")
+    plt.close(figure)
+    print(f"Wrote before-and-after previews to {OUTPUT}")
+
+
+if __name__ == "__main__":
+    main()

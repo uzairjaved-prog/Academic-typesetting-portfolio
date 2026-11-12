@@ -1,2 +1,8 @@
 \chapter{Conclusion}\label{ch:concl}
-We answered RQ1--RQ3 on synthetic data: temperature explains most of the variance in demand, sites differ by a few watts, and a suitably damped PID loop regulates the response. The principal contribution is the \emph{architecture}: modular chapters, one preamble, scripted figures.\index{reproducibility}
+
+The fitted hinge regression has an in-sample $R^2$ of \hingeRtwo{} on the generated observations. The data were created from a temperature-based formula with site offsets, so this statistic describes how the fitted curve represents the example data. It is not evidence about real monitoring sites, a causal effect, or accuracy on new observations.
+
+The PID block diagram and the second-order step-response plot illustrate a feedback-control structure and the effect of changing damping. No controller was tuned against the generated dataset, and no physical system was controlled.
+
+The sample's purpose is to show a reproducible LaTeX project: the chapters, diagrams, figures, tables, bibliography, and index are kept in separate files and rebuilt by scripts.
+\index{reproducibility}

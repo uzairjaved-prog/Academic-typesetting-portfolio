@@ -1,13 +1,15 @@
-\chapter{Introduction}\label{ch:intro}
-\section{Motivation}
-Energy monitoring\index{energy monitoring} systems produce long hourly series whose behaviour is dominated by weather. Understanding the temperature--demand\index{demand model} link supports forecasting and control~\cite{ogata2010modern}.
+\chapter{Introduction}
 
-\section{Research Questions}
+\section{Motivation}
+Energy-monitoring\index{energy monitoring} systems record measurements over time. Temperature can be one of several factors associated with power demand\index{power demand}. This sample uses synthetic data\index{synthetic data} and generated hourly data to show how such measurements can be summarized and typeset. The values are illustrative; they do not come from a live site or a published experiment.
+
+\section{Questions}
+The example is organized around three questions:
 \begin{enumerate}[label=\textbf{RQ\arabic*.}]
-  \item How strongly is power demand coupled to temperature?
-  \item Do monitoring sites differ systematically?
-  \item Can a feedback controller regulate the resulting demand?
+  \item How are temperature and power associated in the generated data?
+  \item How do the three example sites differ in their generated power values?
+  \item How can a feedback-control system be illustrated with a block diagram and a step-response plot?
 \end{enumerate}
 
-\section{Structure of the Thesis}
-\Cref{ch:lit} reviews tools and theory, \cref{ch:method} states the model and pipeline, \cref{ch:results} reports findings, and \cref{ch:concl} concludes. Reproducibility material is in \cref{app:repro}.
+\section{Structure}
+\Cref{ch:lit} describes the software and background, \cref{ch:method} explains the data and model, and \cref{ch:results} reports the summaries produced by the scripts. \Cref{ch:concl} states what these examples do and do not show. The commands used to regenerate the files are listed in \cref{app:repro}.
