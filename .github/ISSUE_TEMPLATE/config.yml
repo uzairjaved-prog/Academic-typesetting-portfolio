@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security reporting instructions
+    url: https://github.com/uzairjaved-prog/Academic-typesetting-portfolio/blob/main/SECURITY.md
+    about: Please read these instructions before reporting a security concern. Do not post vulnerability details publicly.
