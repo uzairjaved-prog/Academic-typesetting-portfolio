@@ -190,9 +190,10 @@ The main Makefile targets are:
 
 The files under <code>dist/</code>, <code>figures/</code> and the generated CSV are build products. Edit the source scripts and <code>.tex</code> files, then rebuild them. Do not edit generated outputs by hand. When a source change affects a sample, inspect the new PDFs and images before running <code>make refresh-samples</code>; review the resulting binary changes before committing them.
 
-For the Python style check, run:
+Ruff is installed separately from the packages in `requirements.txt`. Install it and run the check from the repository root:
 
 ~~~bash
+python -m pip install ruff
 ruff check scripts
 ~~~
 
@@ -208,7 +209,7 @@ The workflow:
 4. Checks LaTeX logs for undefined references and citations.
 5. Collects PDFs and checksums, renders previews, and uploads an artifact named <code>pdfs</code>.
 
-The workflow artifact is temporary and is retained for 30 days. Publishing a version tag also creates a GitHub Release containing the sample PDFs, checksums and preview images. The release files provide a convenient download; the copies in <code>docs/samples/</code> remain part of the repository itself.
+The workflow artifact is temporary and is retained for 30 days. Publishing a version tag also creates a GitHub Release containing the sample PDFs, checksums and preview images. Release downloads are snapshots of their tags and do not change when `main` is updated; use the PDFs linked above for the current committed samples.
 
 ## Repository guide
 
@@ -246,7 +247,7 @@ The repository is distributed under the [MIT License](LICENSE). The license does
 
 ## Contact
 
-For enquiries about the work shown here, use the [GitHub profile](https://github.com/uzairjaved-prog). A first message can include the document type, target template, approximate length and any relevant submission instructions. No email address or other contact channel is assumed by this repository.
+For enquiries about the work shown here, contact me through my [GitHub profile](https://github.com/uzairjaved-prog). Include the document type, target template, approximate length and any submission instructions so the scope is clear.
 
 ---
 
