@@ -229,7 +229,7 @@ The root README is the entry point. Each main source and output directory has a 
 | [docs/](docs/README.md) | Files prepared for visitors to browse. |
 | [docs/samples/](docs/samples/README.md) | Committed PDF samples. |
 | [docs/previews/](docs/previews/README.md) | Committed JPG previews used above. |
-| [.github/workflows/](.github/workflows/README.md) | Automated build and release workflow. |
+| [Build workflow guide](.github/workflows/BUILD-WORKFLOW.md) | Automated build and release workflow. |
 
 ## Contributing
 
