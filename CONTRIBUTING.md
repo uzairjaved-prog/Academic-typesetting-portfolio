@@ -15,6 +15,10 @@ Use Python 3.10 or newer and install the Python requirements:
 
     python -m pip install -r requirements.txt
 
+Ruff is used for linting and is installed separately:
+
+    python -m pip install ruff
+
 A full build also requires TeX Live or MiKTeX with latexmk, and Poppler's pdftoppm utility for preview rendering.
 
 ## Checks to run
