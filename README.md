@@ -16,7 +16,7 @@
 </div>
 
 <p align="center">
-  <img src="docs/previews/portfolio-overview.jpg" alt="Overview of the academic paper, thesis, TikZ diagrams and scientific figures in this portfolio" width="100%">
+  <img src="docs/previews/repository-social-preview-q68.jpg" alt="Academic Typesetting Portfolio banner featuring a research paper, thesis, TikZ diagrams and scientific plots" width="100%">
 </p>
 
 This repository brings together three complete document samples and the source used to produce them. It is intended to let a reader inspect both sides of the work: the finished PDF and the LaTeX or Python files behind it.
